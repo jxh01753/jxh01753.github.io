@@ -19,7 +19,7 @@ a {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 1fr auto;
     gap: 0px 0px;
     grid-template-areas:
       "left-space middle-content middle-content right-space"
@@ -37,6 +37,10 @@ a {
 
   /* styling */
 
+  .nav-bar {
+      display: flex;
+  }
+
   .site-name {
       font-size: 2rem;
       color: inherit;
@@ -47,10 +51,16 @@ a {
       color: inherit;
   }
 
+  .main-content {
+      padding-top: 2rem;
+  }
+
   .about-me-block {
       margin-right: 2rem;
   }
 
   .footer {
+    grid-row-start:2;
+    grid-row-end: 3;
     padding-top: 10rem;
   }
