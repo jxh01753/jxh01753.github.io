@@ -97,9 +97,12 @@ To keep this guide brief, we're just going to copy Dr Liu's settings. You may fi
   
 ### Daily Limits
 ___New Cards/Day:___
-For Chinese, I personally only like to learn 10-15 new characters a day. For Korean, I tried to learn 20 words a day. You can set this to what you are comfortable with. __Recommended: 15__.  
 
-__Maximum Reviews Per Day:__ Many users recommend setting this to 9999. The minimum you should set this to is **10 times** the amount of new cards. You may find if you miss a few days or a week or so of Anki that the review count piles up and you may be put off doing your reviews. **DO NOT RESET THE DECK**. Instead, reduce the amount of reviews down to 10 times the amount of new cards. **Recommended: 9999**.  
+	For Chinese, I personally only like to learn 10-15 new characters a day. For Korean, I tried to learn 20 words a day. You can set this to what you are comfortable with. __Recommended: 15__.  
+
+__Maximum Reviews Per Day:__ 
+	
+	Many users recommend setting this to 9999. The minimum you should set this to is **10 times** the amount you have set new cards/day. You may find if you miss a few days or a week or so of Anki that the review count piles up and you may be put off doing your reviews. **DO NOT RESET THE DECK**. Instead, reduce the amount of reviews down to 10 times the amount of new cards. **Recommended: 9999**.  
   
 Follow the rest of the settings in the next picture -
 
