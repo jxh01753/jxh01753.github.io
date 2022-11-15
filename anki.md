@@ -167,7 +167,7 @@ By default, the Chinese Support Addon sets up the cards to be English on the fro
   
 	I personally prefer 汉字 on the front and English, 汉字, Pinyin, Definition on the back. I will cover modifying cards in a (near) future update.
 
-Once you have learned/reviewed all of the cards successfully, that's it! You will be prompted to learn more cards again tomorrow. **Make sure to check for and complete your reviews EVERY DAY**. This is really important to keep your review count down. It is also important to review every day because otherwise the interval settings are messed up.
+Once you have learned/reviewed all of the cards successfully, that's it! You will be prompted to learn more cards again tomorrow. **Make sure to check for and complete your reviews EVERY DAY**. The beauty of anki is that when you have it synced to your mobile device you can do your reviews anywhere. On the train, in the bathroom, waiting in a queue, eating food etc. Doing reviews every day is really important to keep your review count down. It is also important to review every day because otherwise the interval settings are messed up.
 
 ## Notes
 I will update this guide further and simplify things because I appreciate this is a lot of information to take in for what should be a simple flashcard app. I also need to cover basic modifying card styles and different card types. I will also cover Syncing decks to ankiweb and using them on mobile devices.
