@@ -95,9 +95,9 @@ Once the addon is installed, we can begin creating a **deck** and creating a **p
 On the main Anki page, at the bottom click "Create Deck". You can call it whatever you like.  
 When you have created your new deck, click the cog icon on the right of it in the list and select **options**.  
 
-![](/img/3-preset-options.png)
-
 At the top of the screen where it says "Default (used by X decks), click the down arrow to the right of the **Save** button and select **Add Preset**.  
+
+![](/img/3-preset-options.png)
   
 ## Deck Presets  
 
