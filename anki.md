@@ -16,11 +16,15 @@ Anki is (mostly) free software. It is available for free on Windows, macOS, Linu
   
 Anki has a [huge library of flashcard decks](https://ankiweb.net/shared/decks/) for a wide range of topics from Mandarin, English and Korean to Chemistry, Medicine and Physics.
 
-	While there is a huge library of pre-made decks, most anki language learners recommend creating your own decks and adding your own cards. Especially if you are following a course/cirriculum. It is easy to lose track of what you need to learn.
+```
+While there is a huge library of pre-made decks, most anki language learners recommend creating your own decks and adding your own cards. Especially if you are following a course/cirriculum. It is easy to lose track of what you need to learn.
+```
   
 Anki is very versatile software and can be customised to suit the needs of the user. Because of this, it can be a little intimidating for first time users because there are so many options and ways to customise Anki that it can be overwhelming. 
 
-	I haven't gone too deep into the customisation side of Anki, I have only set up Anki to how I like to use it, so you may find after using it for a little while that you would like things to work differently and Anki allows for that.
+```
+I haven't gone too deep into the customisation side of Anki, I have only set up Anki to how I like to use it, so you may find after using it for a little while that you would like things to work differently and Anki allows for that.
+```
 
 ## What you need
 To follow this guide, you need either -  
@@ -31,7 +35,9 @@ To follow this guide, you need either -
 ## Getting Anki  
 Anki is available from the [Anki website](https://apps.ankiweb.net/), the Apple [App Store](https://apps.apple.com/us/app/ankimobile-flashcards/id373493387) (iOS) and the Google [Play Store](https://play.google.com/store/apps/details?id=com.ichi2.anki&pli=1) (Android).  
 
-	**I really recommend setting this up and creating your first deck on a computer first**. Creating flashcards is a **lot** easier on a physical keyboard and computer than it is on a mobile device. When creating cards, the Chinese Support addon only works on computers. Once you have created the card, you can review it on mobile devices. If you only have a mobile device, I will discuss more about this in a (near) future update.
+```
+I really recommend setting this up and creating your first deck on a computer first. Creating flashcards is a **lot** easier on a physical keyboard and computer than it is on a mobile device. When creating cards, the Chinese Support addon only works on computers. Once you have created the card, you can review it on mobile devices. If you only have a mobile device, I will discuss more about this in a (near) future update.
+```
   
 This guide will show how to setup Anki on macOS, but the instructions are the similar for Windows and Linux users. 
   
@@ -124,8 +130,10 @@ At the top of the screen, click **Add**. The Chinese support addon has created s
 Make sure to click the 汉字 button at the top.
 
 In the Hanzi box, fill out the Hanzi/汉字 you want to add to the deck. Then press TAB on your keyboard. The fields should automatically populate and an audio file will be generated and attached to the card. Click add.   
-  
-	The autofill only works with Hanzi/汉字, if you mess up you will have to close the window and reopen the Add Card window again.
+
+```  
+The autofill only works with Hanzi/汉字, if you mess up you will have to close the window and reopen the Add Card window again.
+```
 
 ![](/img/7-filled-card.png)
 
@@ -135,7 +143,9 @@ Your new card is now added to the deck and is ready to review!
 
 The key thing to remember when reviewing cards is that it's ok to get the answer wrong. Don't cheat, don't skip, if you do not remember the card, **click the AGAIN button**. If you do remember the card, **click the GOOD button**. 
 
-	The big rule here is **Do not click the HARD button**. The short reason is that clicking the hard button messes with the card intervals (time between when you will see the card again). If you want to know the long reason then please watch Dr Liu's video linked in the Deck Presets section.
+```
+The big rule here is **Do not click the HARD button**. The short reason is that clicking the hard button messes with the card intervals (time between when you will see the card again). If you want to know the long reason then please watch Dr Liu's video linked in the Deck Presets section.
+```
 
 ![](/img/8-reviewing-cards.png)
 
