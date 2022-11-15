@@ -11,19 +11,19 @@ Put simply, Anki is a flashcard app. How Anki differs from manual flashcards tha
 Anki is very popular with language learners, hobbyists and medical students to help them retain information. Language learners tend to like Anki/SRS because it allows them to learn and retain vocabulary a lot easier than with manual repetition/physical flashcards.  
   
 Anki is (mostly) free software. It is available for free on Windows, macOS, Linux and Android, although there is a 25USD fee for the app on iOS devices. 
-	
-	I personally use Anki on Windows, macOS and iOS and I honestly would pay for Anki again.
   
 Anki has a [huge library of flashcard decks](https://ankiweb.net/shared/decks/) for a wide range of topics from Mandarin, English and Korean to Chemistry, Medicine and Physics.
 
 ```
-While there is a huge library of pre-made decks, most anki language learners recommend creating your own decks and adding your own cards. Especially if you are following a course/cirriculum. It is easy to lose track of what you need to learn.
+While there is a huge library of pre-made decks, most anki language learners recommend creating your own decks and adding your own cards. 
+Especially if you are following a course/cirriculum. It is easy to lose track of what you need to learn.
 ```
   
 Anki is very versatile software and can be customised to suit the needs of the user. Because of this, it can be a little intimidating for first time users because there are so many options and ways to customise Anki that it can be overwhelming. 
 
 ```
-I haven't gone too deep into the customisation side of Anki, I have only set up Anki to how I like to use it, so you may find after using it for a little while that you would like things to work differently and Anki allows for that.
+I haven't gone too deep into the customisation side of Anki, I have only set up Anki to how I like to use it.
+You may find after using it for a little while that you would like things to work differently and Anki allows for that.
 ```
 
 ## What you need
@@ -36,7 +36,10 @@ To follow this guide, you need either -
 Anki is available from the [Anki website](https://apps.ankiweb.net/), the Apple [App Store](https://apps.apple.com/us/app/ankimobile-flashcards/id373493387) (iOS) and the Google [Play Store](https://play.google.com/store/apps/details?id=com.ichi2.anki&pli=1) (Android).  
 
 ```
-I really recommend setting this up and creating your first deck on a computer first. Creating flashcards is a **lot** easier on a physical keyboard and computer than it is on a mobile device. When creating cards, the Chinese Support addon only works on computers. Once you have created the card, you can review it on mobile devices. If you only have a mobile device, I will discuss more about this in a (near) future update.
+I really recommend setting this up and creating your first deck on a computer first. 
+Creating flashcards is a **lot** easier on a physical keyboard and computer than it is on a mobile device. 
+When creating cards, the Chinese Support addon only works on computers. Once you have created the card, you can review it on mobile devices. 
+If you only have a mobile device, I will discuss more about this in a (near) future update.
 ```
   
 This guide will show how to setup Anki on macOS, but the instructions are the similar for Windows and Linux users. 
@@ -108,7 +111,10 @@ ___New Cards/Day:___
 
 __Maximum Reviews Per Day:__ 
 	
-	Many users recommend setting this to 9999. The minimum you should set this to is **10 times** the amount you have set new cards/day. You may find if you miss a few days or a week or so of Anki that the review count piles up and you may be put off doing your reviews. **DO NOT RESET THE DECK**. Instead, reduce the amount of reviews down to 10 times the amount of new cards. **Recommended: 9999**.  
+	Many users recommend setting this to 9999. 
+	The minimum you should set this to is **10 times** the amount you have set new cards/day. 
+	You may find if you miss a few days or a week or so of Anki that the review count piles up and you may be put off doing your reviews. 
+	**DO NOT RESET THE DECK**. Instead, reduce the amount of reviews down to 10 times the amount of new cards. **Recommended: 9999**.  
   
 Follow the rest of the settings in the next picture -
 
@@ -144,7 +150,9 @@ Your new card is now added to the deck and is ready to review!
 The key thing to remember when reviewing cards is that it's ok to get the answer wrong. Don't cheat, don't skip, if you do not remember the card, **click the AGAIN button**. If you do remember the card, **click the GOOD button**. 
 
 ```
-The big rule here is **Do not click the HARD button**. The short reason is that clicking the hard button messes with the card intervals (time between when you will see the card again). If you want to know the long reason then please watch Dr Liu's video linked in the Deck Presets section.
+The big rule here is **Do not click the HARD button**. 
+The short reason is that clicking the hard button messes with the card intervals (time between when you will see the card again). 
+If you want to know the long reason then please watch Dr Liu's video linked in the Deck Presets section.
 ```
 
 ![](/img/8-reviewing-cards.png)
