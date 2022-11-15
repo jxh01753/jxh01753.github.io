@@ -31,7 +31,7 @@ To follow this guide, you need either -
 ## Getting Anki  
 Anki is available from the [Anki website](https://apps.ankiweb.net/), the Apple [App Store](https://apps.apple.com/us/app/ankimobile-flashcards/id373493387) (iOS) and the Google [Play Store](https://play.google.com/store/apps/details?id=com.ichi2.anki&pli=1) (Android).  
 
-	**I really recommend setting this up on a computer first**. Creating flashcards is a **lot** easier on a physical keyboard and computer than it is on a mobile device. If you only have a mobile device, I will discuss more about this in a (near) future update.
+	**I really recommend setting this up and creating your first deck on a computer first**. Creating flashcards is a **lot** easier on a physical keyboard and computer than it is on a mobile device. When creating cards, the Chinese Support addon only works on computers. Once you have created the card, you can review it on mobile devices. If you only have a mobile device, I will discuss more about this in a (near) future update.
   
 This guide will show how to setup Anki on macOS, but the instructions are the similar for Windows and Linux users. 
   
