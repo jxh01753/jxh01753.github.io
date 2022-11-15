@@ -104,7 +104,7 @@ To keep this guide brief, we're just going to copy Dr Liu's settings. You may fi
 ### Daily Limits
 ___New Cards/Day:___
 
-	For Chinese, I personally only like to learn 10-15 new characters a day. For Korean, I tried to learn 20 words a day. You can set this to what you are comfortable with. __Recommended: 15__.  
+	You can set this to what you are comfortable with. I personally only like to learn 10-15 new characters a day.
 
 __Maximum Reviews Per Day:__ 
 	
