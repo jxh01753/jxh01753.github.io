@@ -15,7 +15,8 @@ Anki is (mostly) free software. It is available for free on Windows, macOS, Linu
 Anki has a [huge library of flashcard decks](https://ankiweb.net/shared/decks/) for a wide range of topics from Mandarin, English and Korean to Chemistry, Medicine and Physics.
 
 ```
-While there is a huge library of pre-made decks, most anki language learners recommend creating your own decks and adding your own cards. 
+While there is a huge library of pre-made decks, most anki language learners recommend creating 
+your own decks and adding your own cards. 
 Especially if you are following a course/cirriculum. It is easy to lose track of what you need to learn.
 ```
   
@@ -23,7 +24,8 @@ Anki is very versatile software and can be customised to suit the needs of the u
 
 ```
 I haven't gone too deep into the customisation side of Anki, I have only set up Anki to how I like to use it.
-You may find after using it for a little while that you would like things to work differently and Anki allows for that.
+You may find after using it for a little while that you would like things to work differently 
+and Anki allows for that.
 ```
 
 ## What you need
@@ -38,7 +40,8 @@ Anki is available from the [Anki website](https://apps.ankiweb.net/), the Apple 
 ```
 I really recommend setting this up and creating your first deck on a computer first. 
 Creating flashcards is a **lot** easier on a physical keyboard and computer than it is on a mobile device. 
-When creating cards, the Chinese Support addon only works on computers. Once you have created the card, you can review it on mobile devices. 
+When creating cards, the Chinese Support addon only works on computers.
+Once you have created the card, you can review it on mobile devices. 
 If you only have a mobile device, I will discuss more about this in a (near) future update.
 ```
   
@@ -113,8 +116,10 @@ __Maximum Reviews Per Day:__
 	
 	Many users recommend setting this to 9999. 
 	The minimum you should set this to is **10 times** the amount you have set new cards/day. 
-	You may find if you miss a few days or a week or so of Anki that the review count piles up and you may be put off doing your reviews. 
-	**DO NOT RESET THE DECK**. Instead, reduce the amount of reviews down to 10 times the amount of new cards. **Recommended: 9999**.  
+	You may find if you miss a few days or a week or so of Anki that the review count piles up
+	and you may be put off doing your reviews. 
+	**DO NOT RESET THE DECK**. Instead, reduce the amount of reviews down to 
+	10 times the amount of new cards. **Recommended: 9999**.  
   
 Follow the rest of the settings in the next picture -
 
@@ -138,7 +143,8 @@ Make sure to click the 汉字 button at the top.
 In the Hanzi box, fill out the Hanzi/汉字 you want to add to the deck. Then press TAB on your keyboard. The fields should automatically populate and an audio file will be generated and attached to the card. Click add.   
 
 ```  
-The autofill only works with Hanzi/汉字, if you mess up you will have to close the window and reopen the Add Card window again.
+The autofill only works with Hanzi/汉字. 
+If you mess up you will have to close the window and reopen the Add Card window again.
 ```
 
 ![](/img/7-filled-card.png)
@@ -151,8 +157,10 @@ The key thing to remember when reviewing cards is that it's ok to get the answer
 
 ```
 The big rule here is **Do not click the HARD button**. 
-The short reason is that clicking the hard button messes with the card intervals (time between when you will see the card again). 
-If you want to know the long reason then please watch Dr Liu's video linked in the Deck Presets section.
+The short reason is that clicking the hard button messes with the card intervals 
+(time between when you will see the card again). 
+If you want to know the long reason then please watch Dr Liu's video linked 
+in the Deck Presets section.
 ```
 
 ![](/img/8-reviewing-cards.png)
@@ -173,7 +181,8 @@ I will repeat again - if you did not remember the card, **click the AGAIN button
 
 By default, the Chinese Support Addon sets up the cards to be English on the front and then  汉字, Pinyin,  + English Definition on the back.   
   
-	I personally prefer 汉字 on the front and English, 汉字, Pinyin, Definition on the back. I will cover modifying cards in a (near) future update.
+	I personally prefer 汉字 on the front and English, 汉字, Pinyin, Definition on the back. 
+	I will cover modifying cards in a (near) future update.
 
 Once you have learned/reviewed all of the cards successfully, that's it! You will be prompted to learn more cards again tomorrow. **Make sure to check for and complete your reviews EVERY DAY**. The beauty of anki is that when you have it synced to your mobile device you can do your reviews anywhere. On the train, in the bathroom, waiting in a queue, eating food etc. Doing reviews every day is really important to keep your review count down. It is also important to review every day because otherwise the interval settings are messed up.
 
