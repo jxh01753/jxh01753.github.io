@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LIS Group — Environmental Services since 1992</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  :root {
+    --paper: #F4F1EC;
+    --paper-2: #ECE7DF;
+    --ink: #0B1220;
+    --ink-2: #1E2536;
+    --muted: #6A6F7A;
+    --rule: #D8D1C4;
+    --primary: #1E5A8C;     /* British petrol blue */
+    --primary-deep: #0F3D63;
+    --leaf: #4A7C59;        /* moss/leaf green */
+    --leaf-deep: #2F5A3E;
+    --accent: #C8A24A;      /* brass — for occasional highlights */
+    --max: 1400px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    line-height: 1.5;
+  }
+  ::selection { background: var(--ink); color: var(--paper); }
+
+  .display { font-family: 'Inter Tight', sans-serif; letter-spacing: -0.025em; line-height: 0.95; font-weight: 700; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 720px) { .container { padding: 0 20px; } }
+
+  /* --- Top utility / nav --- */
+  .topstrip {
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .topstrip-inner {
+    display: flex; gap: 28px; align-items: center;
+    padding: 10px 0; flex-wrap: wrap;
+  }
+  .topstrip .dot { width: 6px; height: 6px; background: var(--leaf); border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: middle; box-shadow: 0 0 0 4px rgba(74,124,89,0.18); }
+  .topstrip a { color: inherit; text-decoration: none; opacity: 0.8; }
+  .topstrip a:hover { opacity: 1; }
+  .topstrip .spacer { flex: 1; }
+
+  nav.main {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(244, 241, 236, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+  .brand-mark {
+    height: 38px;
+    width: auto;
+    display: block;
+  }
+  .brand-name { font-family: 'Inter Tight'; font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
+  .brand-sub { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+
+  .navlinks { display: flex; gap: 4px; align-items: center; }
+  .navlinks a {
+    padding: 10px 14px;
+    color: var(--ink-2);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .navlinks a:hover { background: rgba(11, 18, 32, 0.06); color: var(--ink); }
+  @media (max-width: 900px) { .navlinks a:not(.cta) { display: none; } }
+
+  .cta {
+    background: var(--ink) !important;
+    color: var(--paper) !important;
+    padding: 12px 18px !important;
+    border-radius: 999px !important;
+    font-weight: 600 !important;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .cta:hover { background: var(--primary) !important; }
+  .cta::after { content: '→'; font-family: 'Inter Tight'; }
+
+  /* --- Hero --- */
+  .hero { padding: 60px 0 80px; position: relative; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+    align-items: end;
+  }
+  @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: ''; width: 32px; height: 1px; background: var(--ink); display: inline-block;
+  }
+
+  h1.hero-title {
+    font-size: clamp(56px, 8.6vw, 132px);
+    margin: 0 0 32px;
+  }
+  h1.hero-title em {
+    font-style: normal;
+    color: var(--primary);
+    font-family: 'Inter Tight';
+    font-weight: 400;
+    font-feature-settings: 'ss01';
+  }
+  h1.hero-title .leaf { color: var(--leaf); font-weight: 400; font-style: italic; }
+
+  .hero-lede {
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 56ch;
+    margin: 0 0 36px;
+    line-height: 1.55;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 15px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.15s, color 0.15s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--primary); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn .arrow { font-family: 'Inter Tight'; font-size: 16px; }
+
+  /* hero side stats */
+  .hero-side {
+    border-left: 1px solid var(--rule);
+    padding-left: 32px;
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  @media (max-width: 980px) { .hero-side { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 32px; } }
+
+  .stat .num { font-family: 'Inter Tight'; font-weight: 700; font-size: 56px; line-height: 1; letter-spacing: -0.03em; }
+  .stat .num span { color: var(--leaf); }
+  .stat .lab { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 28ch; }
+
+  /* hero photo placeholder */
+  .hero-photo {
+    margin-top: 60px;
+    aspect-ratio: 21/9;
+    background: var(--ink);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background-image:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 18px),
+      linear-gradient(180deg, #1a2535 0%, #0B1220 100%);
+  }
+  .photo-meta {
+    position: absolute; left: 24px; bottom: 20px;
+    color: rgba(244,241,236,0.7);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .photo-meta strong { color: var(--paper); font-weight: 500; display: block; font-size: 13px; margin-bottom: 4px; letter-spacing: 0.04em; }
+  .photo-tl {
+    position: absolute; right: 24px; top: 20px;
+    color: rgba(244,241,236,0.5);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  .photo-tag {
+    position: absolute; left: 24px; top: 20px;
+    background: var(--leaf);
+    color: var(--paper);
+    padding: 6px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  /* --- ticker / marquee of capabilities --- */
+  .ticker {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+    background: var(--paper);
+    padding: 22px 0;
+    margin-top: 60px;
+  }
+  .ticker-track {
+    display: flex; gap: 56px;
+    white-space: nowrap;
+    animation: tick 60s linear infinite;
+    font-family: 'Inter Tight'; font-weight: 600;
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .ticker-track span { display: inline-flex; align-items: center; gap: 56px; }
+  .ticker-track i {
+    font-style: normal;
+    width: 8px; height: 8px; background: var(--leaf); border-radius: 50%;
+    display: inline-block;
+  }
+  @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* --- section header pattern --- */
+  section { padding: 100px 0; border-top: 1px solid var(--rule); }
+  @media (max-width: 720px) { section { padding: 64px 0; } }
+  .sec-head { display: grid; grid-template-columns: 200px 1fr; gap: 48px; margin-bottom: 56px; align-items: start; }
+  @media (max-width: 720px) { .sec-head { grid-template-columns: 1fr; gap: 16px; } }
+  .sec-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 8px;
+  }
+  .sec-tag .num { color: var(--ink); font-weight: 500; }
+  .sec-title {
+    font-family: 'Inter Tight';
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .sec-title em { font-style: italic; font-weight: 400; color: var(--leaf); }
+  .sec-title b { color: var(--primary); font-weight: 700; }
+
+  /* --- About --- */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: start; }
+  @media (max-width: 980px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .about-body p { font-size: 17px; line-height: 1.65; max-width: 60ch; color: var(--ink-2); margin: 0 0 1em; }
+  .about-body p:first-child::first-letter {
+    font-family: 'Inter Tight'; font-weight: 700; font-size: 64px;
+    float: left; line-height: 0.85; padding-right: 12px; padding-top: 6px; color: var(--ink);
+  }
+
+  .timeline { display: flex; flex-direction: column; gap: 4px; }
+  .tl-row {
+    display: grid; grid-template-columns: 80px 1fr; gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .tl-row:last-child { border-bottom: none; }
+  .tl-year { font-family: 'Inter Tight'; font-weight: 700; font-size: 20px; color: var(--primary); letter-spacing: -0.01em; }
+  .tl-text { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+  .tl-text strong { color: var(--ink); font-weight: 600; }
+
+  /* --- Services --- */
+  .svc-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+  .svc {
+    grid-column: span 4;
+    background: var(--paper-2);
+    padding: 28px;
+    border-radius: 8px;
+    position: relative;
+    transition: background 0.18s, transform 0.18s;
+    cursor: pointer;
+    min-height: 240px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    overflow: hidden;
+  }
+  .svc:hover { background: var(--ink); color: var(--paper); transform: translateY(-3px); }
+  .svc:hover .svc-num, .svc:hover .svc-desc { color: rgba(244,241,236,0.65); }
+  .svc:hover .svc-arrow { transform: translate(4px, -4px); color: var(--leaf); }
+  .svc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--muted); }
+  .svc-name { font-family: 'Inter Tight'; font-size: 26px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.05; margin: 12px 0 16px; }
+  .svc-desc { font-size: 13px; color: var(--ink-2); line-height: 1.5; max-width: 32ch; }
+  .svc-arrow { position: absolute; top: 24px; right: 24px; font-family: 'Inter Tight'; font-size: 22px; color: var(--ink); transition: transform 0.18s, color 0.18s; }
+
+  .svc.feature {
+    grid-column: span 8;
+    background: var(--ink);
+    color: var(--paper);
+    min-height: 380px;
+    background-image:
+      radial-gradient(ellipse at 80% 20%, rgba(30,90,140,0.4) 0%, transparent 50%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 18px);
+  }
+  .svc.feature:hover { background: var(--primary-deep); transform: translateY(-3px); }
+  .svc.feature .svc-num { color: rgba(244,241,236,0.5); }
+  .svc.feature .svc-desc { color: rgba(244,241,236,0.7); max-width: 40ch; font-size: 15px; }
+  .svc.feature .svc-name { font-size: 44px; max-width: 14ch; }
+  .svc.feature .svc-arrow { color: var(--leaf); }
+
+  .svc.leaf { background: var(--leaf); color: var(--paper); }
+  .svc.leaf:hover { background: var(--leaf-deep); }
+  .svc.leaf .svc-num { color: rgba(244,241,236,0.6); }
+  .svc.leaf .svc-desc { color: rgba(244,241,236,0.8); }
+  .svc.leaf .svc-arrow { color: var(--paper); }
+  .svc.leaf:hover .svc-num, .svc.leaf:hover .svc-desc { color: rgba(244,241,236,0.85); }
+
+  @media (max-width: 980px) { .svc, .svc.feature { grid-column: span 6; } .svc.feature .svc-name { font-size: 32px; } }
+  @media (max-width: 640px) { .svc, .svc.feature { grid-column: span 12; } }
+
+  /* --- Services (categorized list) --- */
+  .svc-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 880px) { .svc-groups { grid-template-columns: 1fr; } }
+
+  .svc-group {
+    background: var(--paper-2);
+    border-radius: 10px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .svc-group.feature {
+    background: var(--ink);
+    color: var(--paper);
+    grid-column: span 2;
+    background-image:
+      radial-gradient(ellipse at 90% 10%, rgba(74,124,89,0.25) 0%, transparent 55%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 18px);
+  }
+  @media (max-width: 880px) { .svc-group.feature { grid-column: span 1; } }
+
+  .svc-group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .svc-group.feature .svc-group-head { border-bottom-color: rgba(244,241,236,0.18); }
+  .svc-group-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .svc-group.feature .svc-group-id { color: rgba(244,241,236,0.5); }
+  .svc-group-name {
+    font-family: 'Inter Tight';
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.015em;
+    flex: 1;
+  }
+  .svc-group.feature .svc-group-name { font-size: 36px; }
+  .svc-group-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--leaf);
+    color: var(--paper);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .svc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .svc-item {
+    display: grid;
+    grid-template-columns: 36px 1fr 24px;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    transition: padding 0.18s, background 0.18s;
+  }
+  .svc-group.feature .svc-item { border-bottom-color: rgba(244,241,236,0.12); }
+  .svc-item:last-child { border-bottom: none; }
+  .svc-item:hover { padding-left: 14px; padding-right: 14px; }
+  .svc-item:hover .svc-item-arrow { transform: translateX(4px); color: var(--leaf); }
+  .svc-item-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .svc-group.feature .svc-item-num { color: rgba(244,241,236,0.45); }
+  .svc-item-name {
+    font-family: 'Inter Tight';
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .svc-group.feature .svc-item-name { font-size: 18px; }
+  .svc-item-arrow {
+    font-family: 'Inter Tight';
+    font-size: 18px;
+    color: var(--ink);
+    transition: transform 0.18s, color 0.18s;
+    text-align: right;
+  }
+  .svc-group.feature .svc-item-arrow { color: rgba(244,241,236,0.7); }
+  .britfoam {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 980px) { .britfoam { grid-template-columns: 1fr; } }
+  .bf-text { padding: 56px; }
+  .bf-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--leaf); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .bf-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--leaf); }
+  .bf-name { font-family: 'Inter Tight'; font-weight: 700; font-size: clamp(48px, 6vw, 84px); letter-spacing: -0.03em; line-height: 0.95; margin: 0 0 24px; }
+  .bf-name sup { font-size: 0.32em; vertical-align: top; color: var(--leaf); margin-left: 6px; }
+  .bf-desc { font-size: 17px; line-height: 1.6; color: rgba(244,241,236,0.8); max-width: 50ch; margin: 0 0 32px; }
+  .bf-meta { display: flex; flex-direction: column; gap: 14px; padding-top: 24px; border-top: 1px solid rgba(244,241,236,0.15); }
+  .bf-meta div { display: flex; gap: 16px; align-items: baseline; }
+  .bf-meta .k { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,241,236,0.5); width: 110px; flex-shrink: 0; }
+  .bf-meta .v { font-size: 14px; color: var(--paper); }
+
+  .bf-visual {
+    background: var(--leaf-deep);
+    position: relative;
+    min-height: 480px;
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08) 0%, transparent 30%),
+      radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05) 0%, transparent 30%),
+      repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025) 0 1px, transparent 1px 12px);
+    display: grid; place-items: center;
+    padding: 40px;
+  }
+  .bf-diagram {
+    width: 100%; max-width: 360px; aspect-ratio: 1;
+    border: 1px dashed rgba(244,241,236,0.4);
+    border-radius: 50%;
+    position: relative;
+    display: grid; place-items: center;
+  }
+  .bf-diagram::before {
+    content: ''; position: absolute; inset: 18%;
+    border: 1px dashed rgba(244,241,236,0.3); border-radius: 50%;
+  }
+  .bf-diagram::after {
+    content: ''; position: absolute; inset: 36%;
+    background: var(--leaf); border-radius: 50%;
+    box-shadow: 0 0 60px rgba(74,124,89,0.6);
+  }
+  .bf-diagram .bf-label {
+    position: absolute; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: rgba(244,241,236,0.7); letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--leaf-deep); padding: 4px 8px;
+  }
+  .bf-label.t1 { top: -8px; left: 50%; transform: translateX(-50%); }
+  .bf-label.t2 { bottom: -8px; left: 50%; transform: translateX(-50%); }
+  .bf-label.t3 { top: 50%; left: -8px; transform: translateY(-50%) rotate(-90deg); transform-origin: center; }
+  .bf-label.t4 { top: 50%; right: -8px; transform: translateY(-50%) rotate(90deg); transform-origin: center; }
+
+  /* --- Industries --- */
+  .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  @media (max-width: 900px) { .ind-grid { grid-template-columns: repeat(2, 1fr); } }
+  .ind {
+    aspect-ratio: 4/5;
+    background: var(--paper-2);
+    padding: 24px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: background 0.18s, color 0.18s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .ind:hover { background: var(--primary); color: var(--paper); }
+  .ind:hover .ind-num { color: rgba(244,241,236,0.6); }
+  .ind:hover .ind-bar { background: var(--paper); }
+  .ind-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+  .ind-name { font-family: 'Inter Tight'; font-weight: 600; font-size: 24px; letter-spacing: -0.015em; line-height: 1.05; }
+  .ind-bar { width: 32px; height: 2px; background: var(--ink); margin-bottom: 12px; transition: background 0.18s; }
+
+  /* --- Accreditations strip --- */
+  .accred {
+    background: var(--paper-2);
+    padding: 56px 0;
+    border-radius: 12px;
+  }
+  .accred-inner { padding: 0 48px; }
+  .accred-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; text-align: center; }
+  .accred-row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; }
+  @media (max-width: 980px) { .accred-row { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 540px) { .accred-row { grid-template-columns: repeat(2, 1fr); } }
+
+  .accred-item {
+    aspect-ratio: 1;
+    background: var(--paper);
+    border-radius: 6px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 12px;
+    text-align: center;
+    transition: background 0.15s;
+  }
+  .accred-item:hover { background: var(--ink); color: var(--paper); }
+  .accred-mark {
+    font-family: 'Inter Tight'; font-weight: 700; font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  .accred-sub { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .accred-item:hover .accred-sub { color: rgba(244,241,236,0.6); }
+
+  /* --- Testimonials --- */
+  .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 800px) { .quotes { grid-template-columns: 1fr; } }
+  .quote {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 36px;
+    border-radius: 8px;
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .quote-mark {
+    font-family: 'Inter Tight'; font-size: 56px; line-height: 0.6; color: var(--leaf); font-weight: 700;
+  }
+  .quote-body { font-size: 17px; line-height: 1.55; color: var(--ink); text-wrap: pretty; flex: 1; }
+  .quote-attr {
+    display: flex; align-items: center; gap: 14px;
+    padding-top: 20px; border-top: 1px solid var(--rule);
+  }
+  .quote-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--ink); color: var(--paper);
+    display: grid; place-items: center;
+    font-family: 'Inter Tight'; font-weight: 600; font-size: 14px;
+    flex-shrink: 0;
+  }
+  .quote-name { font-weight: 600; font-size: 14px; color: var(--ink); }
+  .quote-co { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* --- Contact --- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .contact-big { font-family: 'Inter Tight'; font-size: clamp(40px, 5vw, 72px); font-weight: 700; letter-spacing: -0.025em; line-height: 0.95; margin: 0 0 32px; }
+  .contact-big em { font-style: italic; font-weight: 400; color: var(--leaf); }
+
+  .contact-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+  .contact-row {
+    display: grid; grid-template-columns: 100px 1fr auto;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: center;
+    text-decoration: none; color: inherit;
+    transition: padding 0.18s;
+  }
+  .contact-row:hover { padding-left: 12px; padding-right: 12px; background: var(--paper-2); }
+  .contact-row:hover .contact-arrow { transform: translateX(4px); }
+  .contact-k { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .contact-v { font-family: 'Inter Tight'; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+  .contact-arrow { font-family: 'Inter Tight'; font-size: 20px; transition: transform 0.18s; }
+
+  .form {
+    background: var(--ink); color: var(--paper);
+    padding: 40px; border-radius: 12px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .form-title { font-family: 'Inter Tight'; font-weight: 600; font-size: 24px; margin: 0 0 12px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,241,236,0.55); }
+  .field input, .field textarea, .field select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(244,241,236,0.25);
+    color: var(--paper);
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { border-bottom-color: var(--leaf); }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .field select option { background: var(--ink); color: var(--paper); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+  .form button {
+    margin-top: 12px;
+    background: var(--leaf);
+    color: var(--paper);
+    border: none;
+    padding: 16px;
+    font-family: 'Inter Tight'; font-weight: 600; font-size: 15px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: background 0.15s;
+  }
+  .form button:hover { background: var(--paper); color: var(--ink); }
+  .form-msg {
+    background: rgba(74,124,89,0.15);
+    border: 1px solid var(--leaf);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--paper);
+  }
+
+  /* --- Footer --- */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 0 32px;
+    margin-top: 80px;
+  }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; }
+  @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+  @media (max-width: 540px) { .foot-grid { grid-template-columns: 1fr; } }
+  .foot-brand { font-family: 'Inter Tight'; font-weight: 700; font-size: 56px; line-height: 0.9; letter-spacing: -0.03em; margin: 0 0 24px; }
+  .foot-tag { font-size: 14px; color: rgba(244,241,236,0.6); max-width: 36ch; line-height: 1.55; }
+  .foot-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,241,236,0.5); margin: 0 0 18px; font-weight: 500; }
+  .foot-col a { color: var(--paper); text-decoration: none; font-size: 14px; display: block; padding: 6px 0; opacity: 0.85; }
+  .foot-col a:hover { opacity: 1; color: var(--leaf); }
+  .foot-bottom {
+    margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid rgba(244,241,236,0.15);
+    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: rgba(244,241,236,0.5);
+    text-transform: uppercase;
+  }
+
+  /* fade-in */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.shown { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" data-presets="env,react">
+const { useState, useEffect, useRef } = React;
+
+// ── Tweakable defaults (host can rewrite this block) ──
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "leaf",
+  "density": "comfortable",
+  "showTicker": false,
+  "heroVariant": "editorial"
+}/*EDITMODE-END*/;
+
+// ── Data ──
+const SERVICE_GROUPS = [
+  {
+    id: 'A', name: 'Decommissioning', tag: 'BritFoam®',
+    items: [
+      'Decommissioning of Tanks, Voids & Pipelines using BritFoam®',
+      'Tank Decommissioning',
+      'Pipeline Decommissioning',
+      'Void, Trenches & Culverts Decommissioning',
+      'Tank Removal',
+    ],
+    feature: true,
+  },
+  {
+    id: 'B', name: 'Tank & Pipework',
+    items: [
+      'Tank Cleaning and Inspection',
+      'Tank Cleaning by Method of Rotary Washing',
+      'Tank & Pipework Installation',
+      'Tank, Pipework & Line Testing',
+      'Baffle Drilling',
+      'Hot & Cold Cutting',
+    ],
+  },
+  {
+    id: 'C', name: 'Fuel & Forecourt',
+    items: [
+      'Fuel Pump Servicing, Inspection & Calibration',
+      'Fuel Polishing',
+      'Fuel Transfers & Grade Changes',
+      'MTFI Upgrade & Refurbishment',
+      'Site Surveys',
+    ],
+  },
+  {
+    id: 'D', name: 'Cleaning & Waste',
+    items: [
+      'Sludge Removal',
+      'Interceptor Cleaning',
+      'Water Filling & De-Watering',
+      'Waste Disposal & Recycle Fuels',
+      'Non-Destructive Testing & Reporting',
+    ],
+  },
+];
+
+const INDUSTRIES = [
+  { id: '01', name: 'Petrochemical' },
+  { id: '02', name: 'Forecourt & Retail' },
+  { id: '03', name: 'Manufacturing' },
+  { id: '04', name: 'Construction' },
+  { id: '05', name: 'Public Sector' },
+  { id: '06', name: 'Drainage & Utilities' },
+  { id: '07', name: 'Marine & Ports' },
+  { id: '08', name: 'Decommissioning' },
+];
+
+const ACCREDS = [
+  { mark: 'ISO 9001', sub: 'Quality' },
+  { mark: 'ISO 14001', sub: 'Environment' },
+  { mark: 'ISO 45001', sub: 'H&S Mgmt' },
+  { mark: 'CHAS', sub: 'Contractors' },
+  { mark: 'APEA', sub: 'Petroleum' },
+  { mark: 'Constructionline', sub: 'Gold' },
+  { mark: 'Acclaim', sub: 'Accredited' },
+  { mark: 'WAMITAB', sub: 'Waste' },
+  { mark: 'PEIMF', sub: 'Pump Federation' },
+  { mark: 'FTA', sub: 'Logistics' },
+  { mark: 'SPA', sub: 'Safety Pass' },
+  { mark: 'UKAS', sub: 'NQA Cert.' },
+];
+
+const QUOTES = [
+  { body: "Lisa and the LIS team have worked with us for many years. Friendly, professional and totally reliable — when they commit to a deadline, they hit it. We genuinely couldn't recommend them more.", name: 'John Hall', co: 'Hall Drainage Service Ltd', initials: 'JH' },
+  { body: "For five years I've been a site agent working with LIS. Every member of the team is professional, hardworking and dedicated. I look forward to many more years working with them.", name: 'Stuart', co: 'Veolia', initials: 'SV' },
+  { body: "We've used LIS for a long time now and they've never let us down. Whatever you need — they sort it.", name: 'Anonymous', co: 'Long-term client', initials: 'AC' },
+  { body: "LIS is, by some measure, the best contractor we use. Prices are competitive, service is second-to-none, and the team turns up when they say they will.", name: 'Richard Green', co: 'Greens Motor Group', initials: 'RG' },
+];
+
+// ── Helpers ──
+const Reveal = ({ children, delay = 0 }) => {
+  const ref = useRef(null);
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setShown(true); obs.disconnect(); } }, { threshold: 0.12 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return <div ref={ref} className={'reveal ' + (shown ? 'shown' : '')} style={{ transitionDelay: delay + 'ms' }}>{children}</div>;
+};
+
+// ── Sections ──
+const TopStrip = () => (
+  <div className="topstrip">
+    <div className="container topstrip-inner">
+      <span><span className="dot"></span>Nationwide coverage · 24/7</span>
+      <span className="spacer"></span>
+      <a href="tel:01942722244">☎ 01942 722244</a>
+      <a href="mailto:info@lisgroup.co.uk">✉ info@lisgroup.co.uk</a>
+    </div>
+  </div>
+);
+
+const Nav = () => (
+  <nav className="main">
+    <div className="container nav-inner">
+      <a className="brand" href="#top">
+        <img className="brand-mark" src="logo.png" alt="LIS Group" />
+        <div>
+          <div className="brand-sub">Environmental Services · Est. 1999</div>
+        </div>
+      </a>
+      <div className="navlinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#britfoam">BritFoam®</a>
+        <a href="#industries">Industries</a>
+        <a href="#accreditations">Accreditations</a>
+        <a href="#contact" className="cta">Get a quote</a>
+      </div>
+    </div>
+  </nav>
+);
+
+const Hero = ({ tweaks }) => (
+  <section className="hero" style={{ borderTop: 'none', paddingTop: 80 }} id="top">
+    <div className="container">
+      <div className="hero-grid">
+        <div>
+          <div className="eyebrow">Environmental Services / Est. 1999 / St Helens UK</div>
+          <h1 className="display hero-title">
+            Industrial<br/>
+            scale, <em>handled</em><br/>
+            with <span className="leaf">care.</span>
+          </h1>
+          <p className="hero-lede">
+            For over thirty years LIS Group has delivered specialist tank, pipeline and decommissioning services to the petrochemical, forecourt and construction industries — quietly, safely, and on schedule.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="#contact">Request a quote <span className="arrow">→</span></a>
+            <a className="btn btn-ghost" href="#services">View services</a>
+          </div>
+        </div>
+
+        <aside className="hero-side">
+          <div className="stat">
+            <div className="num">26<span>+</span></div>
+            <div className="lab">Years operating nationwide from our St Helens HQ</div>
+          </div>
+          <div className="stat">
+            <div className="num">12</div>
+            <div className="lab">Active accreditations including ISO 9001, 14001, 45001</div>
+          </div>
+          <div className="stat">
+            <div className="num">1<span>°</span></div>
+            <div className="lab">Sole UK manufacturer & licensed applicator of BritFoam®</div>
+          </div>
+        </aside>
+      </div>
+
+      <div className="hero-photo">
+        <div className="photo-tag">Field operations</div>
+        <div className="photo-tl">IMG_0421 · 2024</div>
+        <div className="photo-meta">
+          <strong>LIS tanker — A580, Lancashire</strong>
+          [drop a fleet / tanker photograph here]
+        </div>
+      </div>
+    </div>
+
+    {tweaks.showTicker && (
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker-track">
+          <span>
+            Tank cleaning <i></i> Sludge removal <i></i> Fuel transfers <i></i> BritFoam® decommissioning <i></i> Interceptor cleaning <i></i> Non-destructive testing <i></i> Hot & cold cutting <i></i> MTFI upgrades <i></i> Line testing <i></i> Site surveys <i></i>
+          </span>
+          <span aria-hidden="true">
+            Tank cleaning <i></i> Sludge removal <i></i> Fuel transfers <i></i> BritFoam® decommissioning <i></i> Interceptor cleaning <i></i> Non-destructive testing <i></i> Hot & cold cutting <i></i> MTFI upgrades <i></i> Line testing <i></i> Site surveys <i></i>
+          </span>
+        </div>
+      </div>
+    )}
+  </section>
+);
+
+const About = () => (
+  <section id="about" data-screen-label="About">
+    <div className="container">
+      <div className="sec-head">
+        <div className="sec-tag"><span className="num">01</span> · ABOUT</div>
+        <h2 className="sec-title">A family-run firm doing serious, <em>quiet work</em> since 1992.</h2>
+      </div>
+
+      <div className="about-grid">
+        <div className="about-body">
+          <p>Established in 1999, LIS (North Western) Limited brought together decades of combined industry experience under one roof — committed to the protection of the environment and the efficient, safe service of clients across the UK.</p>
+          <p>In 2007, after extensive R&D, our sister company Lees Industrial Services developed and patented <strong>BritFoam®</strong>: a British, resin-based hard foam now specified for tank and pipeline decommissioning across petrochemical and construction markets. The two companies merged to form the LIS Group in 2010.</p>
+          <p>Today we operate from a headquarters in St Helens with a nationwide team of accredited operatives — every one ADR-licensed, confined-space trained and trusted by clients ranging from independent operators to FTSE-listed primes.</p>
+        </div>
+
+        <div className="timeline">
+          <div className="tl-row"><div className="tl-year">1999</div><div className="tl-text"><strong>LIS (North Western) Ltd</strong> incorporated in St Helens.</div></div>
+          <div className="tl-row"><div className="tl-year">2007</div><div className="tl-text">Sister firm <strong>Lees Industrial Services</strong> develops BritFoam®.</div></div>
+          <div className="tl-row"><div className="tl-year">2010</div><div className="tl-text">Companies rebranded together as <strong>The LIS Group</strong>.</div></div>
+          <div className="tl-row"><div className="tl-year">2015</div><div className="tl-text"><strong>Projects department</strong> launched: end-to-end tank installation & decom.</div></div>
+          <div className="tl-row"><div className="tl-year">2026</div><div className="tl-text">Operating nationwide, <strong>ISO-trio certified</strong>, expanding into renewables.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Services = () => (
+  <section id="services" data-screen-label="Services">
+    <div className="container">
+      <div className="sec-head">
+        <div className="sec-tag"><span className="num">02</span> · CAPABILITIES</div>
+        <h2 className="sec-title">Twenty-one services, <b>one accredited team.</b></h2>
+      </div>
+
+      <div className="svc-groups">
+        {SERVICE_GROUPS.map((g) => (
+          <div key={g.id} className={'svc-group' + (g.feature ? ' feature' : '')}>
+            <div className="svc-group-head">
+              <div className="svc-group-id">Group {g.id}</div>
+              <div className="svc-group-name">{g.name}</div>
+              {g.tag && <div className="svc-group-tag">{g.tag}</div>}
+            </div>
+            <ul className="svc-list">
+              {g.items.map((it, i) => (
+                <li key={i} className="svc-item">
+                  <span className="svc-item-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="svc-item-name">{it}</span>
+                  <span className="svc-item-arrow">→</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const BritFoam = () => (
+  <section id="britfoam" data-screen-label="BritFoam">
+    <div className="container">
+      <div className="sec-head">
+        <div className="sec-tag"><span className="num">03</span> · PRODUCT</div>
+        <h2 className="sec-title">Our own British <em>resin-based</em> decommissioning foam.</h2>
+      </div>
+
+      <div className="britfoam">
+        <div className="bf-text">
+          <div className="bf-eyebrow">A LIS GROUP product · since 2007</div>
+          <h3 className="bf-name">BritFoam<sup>®</sup></h3>
+          <p className="bf-desc">
+            An alternative decommissioning solution to concrete slurry — filling abandoned tanks, pipelines and voids with a lightweight, resin-bound hard foam. Accepted by Petroleum Enforcement Authorities throughout the United Kingdom and meeting the criteria stated in Section 15 of the APEA/EI Blue Book (4th Edition, June 2018).
+          </p>
+          <div className="bf-meta">
+            <div><span className="k">Manufactured</span><span className="v">In St Helens, UK</span></div>
+            <div><span className="k">Compliance</span><span className="v">APEA · Petroleum Enforcement Authorities</span></div>
+            <div><span className="k">Application</span><span className="v">By licensed LIS operatives only</span></div>
+            <div><span className="k">Use cases</span><span className="v">Tanks · pipelines · voids · interceptors</span></div>
+          </div>
+        </div>
+
+        <div className="bf-visual">
+          <div className="bf-diagram">
+            <span className="bf-label t1">Resin matrix</span>
+            <span className="bf-label t2">Lightweight fill</span>
+            <span className="bf-label t3">In-situ cured</span>
+            <span className="bf-label t4">APEA approved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Industries = () => (
+  <section id="industries" data-screen-label="Industries">
+    <div className="container">
+      <div className="sec-head">
+        <div className="sec-tag"><span className="num">04</span> · INDUSTRIES</div>
+        <h2 className="sec-title">Public, private and <em>industrial</em> sectors across the UK.</h2>
+      </div>
+
+      <div className="ind-grid">
+        {INDUSTRIES.map(i => (
+          <div key={i.id} className="ind">
+            <div>
+              <div className="ind-num">{i.id} / 08</div>
+            </div>
+            <div>
+              <div className="ind-bar"></div>
+              <div className="ind-name">{i.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Accreditations = () => (
+  <section id="accreditations" data-screen-label="Accreditations">
+    <div className="container">
+      <div className="sec-head">
+        <div className="sec-tag"><span className="num">05</span> · ACCREDITATIONS</div>
+        <h2 className="sec-title">Twelve memberships. <b>Zero shortcuts.</b></h2>
+      </div>
+
+      <div className="accred">
+        <div className="accred-inner">
+          <div className="accred-title">Certificate № 3777 · ISO 9001 · ISO 14001 · ISO 45001</div>
+          <div className="accred-row">
+            {ACCREDS.map((a, i) => (
+              <div key={i} className="accred-item">
+                <div className="accred-mark">{a.mark}</div>
+                <div className="accred-sub">{a.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Testimonials = () => (
+  <section id="testimonials" data-screen-label="Testimonials">
+    <div className="container">
+      <div className="sec-head">
+        <div className="sec-tag"><span className="num">06</span> · CLIENTS</div>
+        <h2 className="sec-title">What our clients say <em>after the work is done.</em></h2>
+      </div>
+
+      <div className="quotes">
+        {QUOTES.map((q, i) => (
+          <div key={i} className="quote">
+            <div className="quote-mark">"</div>
+            <div className="quote-body">{q.body}</div>
+            <div className="quote-attr">
+              <div className="quote-avatar">{q.initials}</div>
+              <div>
+                <div className="quote-name">{q.name}</div>
+                <div className="quote-co">{q.co}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const submit = (e) => { e.preventDefault(); setSubmitted(true); };
+
+  return (
+    <section id="contact" data-screen-label="Contact">
+      <div className="container">
+        <div className="sec-head">
+          <div className="sec-tag"><span className="num">07</span> · CONTACT</div>
+          <h2 className="sec-title">Tell us what you need. <em>We'll get back today.</em></h2>
+        </div>
+
+        <div className="contact-grid">
+          <div>
+            <div className="contact-list">
+              <a className="contact-row" href="tel:01942722244">
+                <span className="contact-k">Telephone</span>
+                <span className="contact-v">01942 722244</span>
+                <span className="contact-arrow">↗</span>
+              </a>
+              <a className="contact-row" href="mailto:info@lisgroup.co.uk">
+                <span className="contact-k">Email</span>
+                <span className="contact-v">info@lisgroup.co.uk</span>
+                <span className="contact-arrow">↗</span>
+              </a>
+              <a className="contact-row" href="#">
+                <span className="contact-k">Address</span>
+                <span className="contact-v">St Helens, Merseyside, UK</span>
+                <span className="contact-arrow">↗</span>
+              </a>
+              <a className="contact-row" href="#">
+                <span className="contact-k">Hours</span>
+                <span className="contact-v">24 / 7 · Nationwide call-out</span>
+                <span className="contact-arrow">↗</span>
+              </a>
+              <a className="contact-row" href="#">
+                <span className="contact-k">Companies</span>
+                <span className="contact-v">LIS (NW) Ltd · Lees Industrial Services Ltd</span>
+                <span className="contact-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <form className="form" onSubmit={submit}>
+            <div className="form-title">Request a quote</div>
+            {submitted && <div className="form-msg">Thanks — your enquiry has reached the office. A member of the team will be in touch within one working day.</div>}
+            <div className="form-row">
+              <div className="field">
+                <label>Name</label>
+                <input required placeholder="Jane Smith" />
+              </div>
+              <div className="field">
+                <label>Company</label>
+                <input placeholder="Optional" />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="field">
+                <label>Email</label>
+                <input required type="email" placeholder="jane@company.co.uk" />
+              </div>
+              <div className="field">
+                <label>Phone</label>
+                <input placeholder="07000 000000" />
+              </div>
+            </div>
+            <div className="field">
+              <label>Service required</label>
+              <select defaultValue="">
+                <option value="" disabled>Select one…</option>
+                <option>BritFoam® decommissioning</option>
+                <option>Tank cleaning & inspection</option>
+                <option>Fuel transfers & grade changes</option>
+                <option>Sludge removal & disposal</option>
+                <option>Interceptor cleaning</option>
+                <option>Non-destructive testing</option>
+                <option>Hot & cold cutting</option>
+                <option>MTFI upgrades & refurb</option>
+                <option>Other / not sure</option>
+              </select>
+            </div>
+            <div className="field">
+              <label>Tell us briefly about the site</label>
+              <textarea placeholder="Tank size, location, timeline, anything that helps…"></textarea>
+            </div>
+            <button type="submit">Send enquiry →</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Footer = () => (
+  <footer>
+    <div className="container">
+      <div className="foot-grid">
+        <div>
+          <div className="foot-brand">LIS<br/>Group.</div>
+          <div className="foot-tag">Environmental services nationwide. Headquartered in St Helens since 1999.</div>
+        </div>
+        <div className="foot-col">
+          <h4>Site</h4>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#britfoam">BritFoam®</a>
+          <a href="#industries">Industries</a>
+        </div>
+        <div className="foot-col">
+          <h4>Compliance</h4>
+          <a href="#accreditations">Accreditations</a>
+          <a href="#">Health & safety</a>
+          <a href="#">Environmental policy</a>
+          <a href="#">Modern slavery</a>
+        </div>
+        <div className="foot-col">
+          <h4>Contact</h4>
+          <a href="tel:01942722244">01942 722244</a>
+          <a href="mailto:info@lisgroup.co.uk">info@lisgroup.co.uk</a>
+          <a href="#">24/7 call-out</a>
+        </div>
+      </div>
+      <div className="foot-bottom">
+        <span>© 2026 LIS Group Ltd · Cert. № 3777</span>
+        <span>ISO 9001 · 14001 · 45001 · CHAS · APEA · Constructionline Gold</span>
+      </div>
+    </div>
+  </footer>
+);
+
+// ── Tweaks ──
+const TweaksUI = ({ tweaks, setTweak }) => (
+  <TweaksPanel title="Tweaks">
+    <TweakSection title="Hero">
+      <TweakToggle label="Show capability ticker" value={tweaks.showTicker} onChange={v => setTweak('showTicker', v)} />
+    </TweakSection>
+    <TweakSection title="Accent colour">
+      <TweakRadio
+        value={tweaks.accent}
+        onChange={v => setTweak('accent', v)}
+        options={[
+          { value: 'leaf', label: 'Moss green' },
+          { value: 'blue', label: 'Petrol blue' },
+          { value: 'brass', label: 'Brass' },
+        ]}
+      />
+    </TweakSection>
+    <TweakSection title="Density">
+      <TweakRadio
+        value={tweaks.density}
+        onChange={v => setTweak('density', v)}
+        options={[
+          { value: 'comfortable', label: 'Comfortable' },
+          { value: 'compact', label: 'Compact' },
+        ]}
+      />
+    </TweakSection>
+  </TweaksPanel>
+);
+
+// ── App ──
+const App = () => {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  // Apply tweaks via CSS vars
+  useEffect(() => {
+    const r = document.documentElement;
+    if (tweaks.accent === 'leaf') {
+      r.style.setProperty('--leaf', '#4A7C59');
+      r.style.setProperty('--leaf-deep', '#2F5A3E');
+    } else if (tweaks.accent === 'blue') {
+      r.style.setProperty('--leaf', '#1E5A8C');
+      r.style.setProperty('--leaf-deep', '#0F3D63');
+    } else if (tweaks.accent === 'brass') {
+      r.style.setProperty('--leaf', '#C8A24A');
+      r.style.setProperty('--leaf-deep', '#8C6F2F');
+    }
+  }, [tweaks.accent]);
+
+  useEffect(() => {
+    document.body.style.setProperty('--section-padding', tweaks.density === 'compact' ? '64px' : '100px');
+    const sheets = document.querySelectorAll('style');
+    // simple approach — toggle a class
+    document.documentElement.dataset.density = tweaks.density;
+  }, [tweaks.density]);
+
+  return (
+    <>
+      <TopStrip />
+      <Nav />
+      <Hero tweaks={tweaks} />
+      <About />
+      <Services />
+      <BritFoam />
+      <Industries />
+      <Accreditations />
+      <Testimonials />
+      <Contact />
+      <Footer />
+      <TweaksUI tweaks={tweaks} setTweak={setTweak} />
+    </>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<style>
+  html[data-density="compact"] section { padding: 64px 0; }
+  html[data-density="compact"] .hero { padding: 40px 0 56px; }
+  html[data-density="compact"] .sec-head { margin-bottom: 36px; }
+</style>
+
+</body>
+</html>
